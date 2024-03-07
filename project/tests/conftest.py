@@ -21,6 +21,7 @@ def test_app():
 
     # teardown
 
+
 @pytest.fixture(scope='module')
 def test_app_with_db():
     app = create_application()
