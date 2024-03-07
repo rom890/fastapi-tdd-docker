@@ -2,7 +2,9 @@ import json
 
 
 def test_create_summary(test_app_with_db):
-    response = test_app_with_db.post("/summaries/", data=json.dumps({"url": "https://foo.bar"}))
+    response = test_app_with_db.post(
+        "/summaries/", data=json.dumps({"url": "https://foo.bar"})
+    )
 
     assert response.status_code == 201
     assert response.json()["url"] == "https://foo.bar"
@@ -12,23 +14,22 @@ def test_create_summaries_invalid_json(test_app):
     response = test_app.post("/summaries/", data=json.dumps({}))
     assert response.status_code == 422
     assert response.json() == {
-      "detail": [
-        {
-          "type": "missing",
-          "loc": [
-            "body",
-            "url"
-          ],
-          "msg": "Field required",
-          "input": {},
-          "url": "https://errors.pydantic.dev/2.6/v/missing"
-        }
-      ]
+        "detail": [
+            {
+                "type": "missing",
+                "loc": ["body", "url"],
+                "msg": "Field required",
+                "input": {},
+                "url": "https://errors.pydantic.dev/2.6/v/missing",
+            }
+        ]
     }
 
 
 def test_get_summary(test_app_with_db):
-    response = test_app_with_db.post("/summaries/", data=json.dumps({"url": "https://foo.bar"}))
+    response = test_app_with_db.post(
+        "/summaries/", data=json.dumps({"url": "https://foo.bar"})
+    )
     assert response.status_code == 201
     summary_id = response.json()["id"]
 
@@ -49,7 +50,9 @@ def test_read_summary_incorrect_id(test_app_with_db):
 
 
 def test_get_all_summaries(test_app_with_db):
-    response = test_app_with_db.post("/summaries/", data=json.dumps({"url": "https://foo.bar"}))
+    response = test_app_with_db.post(
+        "/summaries/", data=json.dumps({"url": "https://foo.bar"})
+    )
     assert response.status_code == 201
     summary_id = response.json()["id"]
 

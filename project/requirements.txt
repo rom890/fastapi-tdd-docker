@@ -1,5 +1,6 @@
 aerich==0.7.2
 asyncpg==0.29.0
+black==23.12.1
 fastapi==0.109.0
 flake8==7.0.0
 gunicorn==21.0.1
