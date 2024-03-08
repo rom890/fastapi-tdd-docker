@@ -59,5 +59,5 @@ def test_get_all_summaries(test_app_with_db):
     response = test_app_with_db.get("/summaries/")
     assert response.status_code == 200
     response_list = response.json()
-    assert isinstance(response_list) == list
+    assert isinstance(response_list, list)
     assert len(list(filter(lambda x: x["id"] == summary_id, response_list))) == 1
